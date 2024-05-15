@@ -1,6 +1,6 @@
 # flutter_understand_widget
 
-This Flutter project shows how widgets works, with focus on Context and State which much important concepts
+This Flutter project shows how widgets works, with focus on Context and State which much important  concepts
 
 ## Getting Started
 
