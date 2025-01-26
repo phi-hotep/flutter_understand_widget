@@ -1,14 +1,13 @@
 // ignore_for_file: avoid_print, must_be_immutable, prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
-import 'package:flutter_understand_widget/data/data.dart';
 import 'package:flutter_understand_widget/page/movie_details_page.dart';
 
-
 class ShowMoviePage extends StatefulWidget {
-  ShowMoviePage({super.key, required this.showList, required this.refresh});
+  const ShowMoviePage(
+      {super.key, required this.showList, required this.refresh});
 
-  var showList;
+  final showList;
   final Function() refresh;
 
   @override
@@ -20,15 +19,15 @@ class _ShowMoviePageState extends State<ShowMoviePage> {
   @override
   void initState() {
     super.initState();
-    print('La méthode initState est appelée');
+    print('initState is called');
 
-    widget.showList = showList.sublist(0, 2);
+    //widget.showList = showList.sublist(0, 2);
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    print('Ensuite la méthode didChangeDependencies est appelée');
+    print('Then didChangeDependencies is called');
   }
 
 //Is called whenever the user swipe or clic on the double arrow button
@@ -36,7 +35,7 @@ class _ShowMoviePageState extends State<ShowMoviePage> {
   void didUpdateWidget(covariant ShowMoviePage oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget != widget) {
-      print('La méthode didUpdateWidget est appelée');
+      print('didUpdateWidget is called');
     }
   }
 
@@ -48,7 +47,8 @@ class _ShowMoviePageState extends State<ShowMoviePage> {
             IconButton(
               onPressed: () {
                 widget.refresh();
-                print('Le widget enfant doit changer d\' état');
+                print(
+                    'The parent widget forces the child to rebuild with new list of movies');
               },
               icon: const Icon(
                 Icons.compare_arrows_sharp,
@@ -66,7 +66,8 @@ class _ShowMoviePageState extends State<ShowMoviePage> {
           color: Colors.white,
           onRefresh: () async {
             widget.refresh(); // the call for reorder function in parent widget
-            print('Le widget enfant doit changer d\' état');
+            print(
+                'The parent widget forces the child to rebuild with new list of movies');
           },
           child: Center(
             child: ListView.builder(
@@ -147,13 +148,13 @@ class _ShowMoviePageState extends State<ShowMoviePage> {
 
   @override
   void deactivate() {
-    print('La méthode deactivate est appelée');
+    print('deactivate is called');
     super.deactivate();
   }
 
   @override
   void dispose() {
-    print('La méthode dispose est appelée');
+    print('dispose is called');
     super.dispose();
   }
 }
